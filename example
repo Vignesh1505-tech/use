@@ -1,0 +1,62 @@
+import { FaArrowRightLong } from "react-icons/fa6";
+import aerospaceImg from "../assets/industriesImages/aerospace.png";
+import biotechImg from "../assets/industriesImages/biotech.png";
+import electronicsImg from "../assets/industriesImages/electronics.png";
+import healthcareImg from "../assets/industriesImages/healthcare.png";
+import pharmaceuticalsImg from "../assets/industriesImages/pharmaceuticals.png";
+import { useState } from "react";
+
+const industriesWeServe = [
+  {
+    name: "Pharmaceuticals",
+    image: pharmaceuticalsImg,
+  },
+  {
+    name: "Biotechnology",
+    image: biotechImg,
+  },
+  {
+    name: "Healthcare",
+    image: healthcareImg,
+  },
+  {
+    name: "Electronics",
+    image: electronicsImg,
+  },
+  {
+    name: "Aerospace",
+    image: aerospaceImg,
+  },
+];
+
+const IndustriesWeServe = () => {
+  const [animate, setAnimate] = useState(false)
+
+  return (
+    <section onMouseEnter={() => {setAnimate(true)}} onTouchStart={() => {setAnimate(true)}} onMouseLeave={() => {setAnimate(false)}} className="relative bg-[#D4F3FF] bg-opacity-50 px-4 py-12 md:px-8 mb-12">
+      <div className={`absolute transform duration-[5000ms] ${animate && "-translate-x-[770px] translate-y-[450px]"}  right-0 top-2 bg-[#2AFF93] h-[77px] w-[77px] lg:h-[123px] lg:w-[123px] rounded-full blur-[8px] -z-10`}></div>
+      <div className={`absolute transform duration-[5000ms] ${animate && "-translate-x-[920px] translate-y-64"} right-4 lg:right-8 top-2 bg-[#00A551] h-[117px] w-[117px] lg:h-[234px] lg:w-[234px] rounded-full blur-[8px] -z-20`}></div>
+      <div className={`absolute transform duration-[5000ms] ${animate && "translate-x-[770px] -translate-y-[450px]"} -left-8 bottom-0 bg-[#2AFF93] h-[77px] w-[77px] lg:h-[123px] lg:w-[123px] rounded-full blur-[8px] -z-10`}></div>
+      <div className={`absolute transform duration-[5000ms] ${animate && "translate-x-[920px] -translate-y-64"} left-4 -bottom-8 lg:-bottom-12 bg-[#00A551] h-[117px] w-[117px] lg:h-[234px] lg:w-[234px] rounded-full blur-[8px] -z-20`}></div>
+      <div>
+        <h2 className="font-Jura w-fit font-semibold text-xl md:text-2xl lg:text-3xl">
+          Industries We Serve
+        </h2>
+        <p className="font-Karla font-normal my-8 md:w-3/4 xl:w-1/2 text-sm md:text-base">
+          At SP Bio Engineering, we cater to a wide range of industries,
+          ensuring top-notch cleanroom environments for each unique sector
+        </p>
+      </div>
+      <div className="no-scrollbar flex flex-nowrap gap-5 overflow-x-scroll">
+        {industriesWeServe.map((item, i) => (
+          <div key={i} className="relative w-[170px] lg:w-[230px] xl:w-[280px] flex-shrink-0">
+            <img src={item.image} alt="" />
+            <span className="absolute bottom-6 lg:bottom-10 xl:bottom-16 flex items-center justify-between py-1 px-4 w-full font-Karla font-bold bg-white bg-opacity-50">{item.name}<FaArrowRightLong className="text-xl" /></span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default IndustriesWeServe;
